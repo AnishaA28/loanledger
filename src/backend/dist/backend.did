@@ -1,0 +1,50 @@
+type Timestamp = int;
+type Result_1 = 
+ variant {
+   err: text;
+   ok: RepaymentId;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok;
+ };
+type RepaymentId = nat;
+type Repayment = 
+ record {
+   amount_returned: nat;
+   id: RepaymentId;
+   loan_id: LoanId;
+   notes: text;
+   return_date: text;
+   returned_by: principal;
+ };
+type LoanStatus = 
+ variant {
+   active;
+   completed;
+ };
+type LoanId = nat;
+type Loan = 
+ record {
+   amount_given: nat;
+   created_at: Timestamp;
+   given_by: principal;
+   given_date: text;
+   given_to: text;
+   id: LoanId;
+   notes: text;
+   pending_amount: nat;
+   status: LoanStatus;
+   total_returned: nat;
+ };
+service : {
+  addRepayment: (loan_id: LoanId, amount_returned: nat, return_date: 
+   text, notes: text) -> (Result_1);
+  createLoan: (given_to: text, amount_given: nat, given_date: text, notes:
+   text) -> (LoanId);
+  deleteLoan: (id: LoanId) -> (Result);
+  getLoan: (id: LoanId) -> (opt Loan) query;
+  getLoans: () -> (vec Loan) query;
+  getRepayments: (loan_id: LoanId) -> (vec Repayment) query;
+}

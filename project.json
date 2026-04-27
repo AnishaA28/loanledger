@@ -1,0 +1,20 @@
+{
+  "overview": "A personal loan tracking app that lets you record loans you give to others, track repayments, and automatically calculate outstanding balances. Features status tracking (active, completed, overdue) with a full repayment history per loan.",
+  "features": [
+    "Create loans with borrower name, amount, due date, and notes",
+    "Track individual repayments with dates and notes",
+    "Auto-calculated pending amounts and loan status",
+    "Loan detail view with full repayment history",
+    "Dashboard with all loans and their current status",
+    "User authentication via Internet Identity"
+  ],
+  "category": "finance",
+  "tags": [
+    "loans",
+    "finance",
+    "tracking",
+    "repayments",
+    "personal-finance"
+  ],
+  "last_updated": "2026-04-27T09:21:15.473Z"
+}

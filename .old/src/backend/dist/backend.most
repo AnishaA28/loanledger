@@ -1,0 +1,84 @@
+// Version: 3.0.0
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
+type LoanId__233120346 = LoanId__798571042;
+type LoanId__798571042 = Nat;
+type LoanStatus__592388273 = {#active; #completed};
+type Loan__859927698 =
+  {
+    amount_given : Nat;
+    created_at : Timestamp__958010362;
+    given_by : Principal;
+    given_date : Text;
+    given_to : Text;
+    id : LoanId__233120346;
+    notes : Text;
+    pending_amount : Nat;
+    status : LoanStatus__592388273;
+    total_returned : Nat
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type OldLoanStatus__353226433 = {#active; #completed; #overdue};
+type OldLoan__490067984 =
+  {
+    amount_given : Nat;
+    created_at : Int;
+    due_date : Text;
+    given_by : Principal;
+    given_date : Text;
+    given_to : Text;
+    id : Nat;
+    notes : Text;
+    pending_amount : Nat;
+    status : OldLoanStatus__353226433;
+    total_returned : Nat
+  };
+type OldRepayment__251828677 =
+  {
+    amount_returned : Nat;
+    id : Nat;
+    loan_id : Nat;
+    notes : Text;
+    return_date : Text;
+    returned_by : Principal
+  };
+type RepaymentId__532479783 = RepaymentId__725693490;
+type RepaymentId__725693490 = Nat;
+type Repayment__150308848 =
+  {
+    amount_returned : Nat;
+    id : RepaymentId__532479783;
+    loan_id : LoanId__233120346;
+    notes : Text;
+    return_date : Text;
+    returned_by : Principal
+  };
+type Timestamp__301639476 = Int;
+type Timestamp__958010362 = Timestamp__301639476;
+actor ({
+  in loanCounter : {var val : Nat};
+  in loans : List__415060402<OldLoan__490067984>;
+  in repaymentCounter : {var val : Nat};
+  in repayments : List__415060402<OldRepayment__251828677>
+}, {
+  stable loanCounter : {var val : Nat};
+  stable loans :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Loan__859927698]];
+      var elementIndex : Nat__490723111
+    };
+  stable repaymentCounter : {var val : Nat};
+  stable repayments :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Repayment__150308848]];
+      var elementIndex : Nat__490723111
+    }
+}) ;
